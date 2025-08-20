@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Gerador de Senhas Seguras</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="app">
+    <header>
+      <h1>🔐 Gerador de Senhas Seguras</h1>
+      <button class="btn" id="generateTop">Gerar Nova</button>
+    </header>
+
+    <div class="card row">
+      <section class="controls">
+        <div class="field">
+          <label for="length">Comprimento: <strong id="lengthLabel">16</strong> caracteres</label>
+          <input id="length" class="range" type="range" min="6" max="64" value="16" />
+          <span class="hint">Dica: acima de 14 já é bom; 20+ é excelente para contas importantes.</span>
+        </div>
+
+        <div class="field">
+          <label>Conjunto de caracteres</label>
+          <div class="inline">
+            <label><input type="checkbox" id="lower" checked /> a–z</label>
+            <label><input type="checkbox" id="upper" checked /> A–Z</label>
+            <label><input type="checkbox" id="digits" checked /> 0–9</label>
+            <label><input type="checkbox" id="symbols" /> Símbolos (!@#$…)</label>
+          </div>
+          <div class="inline">
+            <label><input type="checkbox" id="ambiguous" /> Excluir ambíguos</label>
+            <label><input type="checkbox" id="noRepeat" /> Sem repetição</label>
+          </div>
+        </div>
+
+        <div class="field">
+          <label for="count">Quantidade para lista (opcional)</label>
+          <div class="inline">
+            <input id="count" type="number" min="1" max="50" value="1"/>
+            <button class="btn secondary" id="generateList">Gerar Lista</button>
+          </div>
+        </div>
+      </section>
+
+      <section class="result">
+        <div class="field">
+          <label>Senha gerada</label>
+          <div class="output">
+            <input id="password" type="text" readonly />
+            <div class="inline">
+              <button class="btn icon" id="copy">📋</button>
+              <button class="btn icon" id="regenerate">🎲</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="field">
+          <label>Força & Entropia</label>
+          <div class="strength" id="strengthBars"></div>
+          <div class="metrics">
+            <div class="metric">
+              <h4>Entropia estimada</h4>
+              <p id="entropy">–</p>
+            </div>
+            <div class="metric">
+              <h4>Tempo de quebra</h4>
+              <p id="crack">–</p>
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+
+    <div class="card" id="listCard" style="display:none;">
+      <h3>Lista de Senhas</h3>
+      <div id="list"></div>
+    </div>
+
+    <footer>
+      Feito com ❤ e matemática.
+    </footer>
+  </div>
+
+  <script src="main.js"></script>
+</body>
+</html>
